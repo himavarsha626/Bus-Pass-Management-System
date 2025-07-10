@@ -1,0 +1,62 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header Section */
+
+header {
+ background-image:url('F:/bus1.jpg');
+   background-color:;
+   color: black;
+   text-align: center;
+   padding: 30px 0;
+   width:100%;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+/* Terms and Conditions Content */
+main {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.terms-container {
+    background-color: ;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+.terms-container h2 {
+    color:black;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+    margin-top: 20px;
+}
+
+.terms-container p {
+    margin: 10px 0;
+    text-align: justify;
+    font-size: 1rem;
+}
+
+

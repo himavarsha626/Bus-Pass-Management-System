@@ -1,0 +1,45 @@
+
+header {
+ background-image:url('F:/bus1.jpg');
+   background-color:;
+   color: black;
+   text-align: center;
+   padding: 20px 0;
+   width:100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+main {
+  /*  border:1px solid black;*/
+   /* width:600px;*/
+   /* height:700px;*/
+     border-radius:10px;
+    text-align: center;
+   /* display: flex;*/
+    justify-content: center;
+    margin: 0px;
+   padding:20px;
+}
+ 
+
+
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom:0;
+    width:99%;
+}

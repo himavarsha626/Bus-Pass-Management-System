@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Pass Application</title>
+  <link rel="stylesheet" href="C:\Users\Kesava Trinadh\Desktop\freapp1.css">
+  <style>
+  header {
+   background-image:url('busimg.png');
+   background-color:;
+   color: black;
+   text-align: center;
+   padding: 20px 0;
+   width:100%;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bus Pass Application Form</h1>
+    <form id="busPassForm">
+      <h2>Personal Details</h2>
+      
+      <label for="photo">Passport Photo:</label>
+      <img src="F:/per.jpg" width=100 height=100>
+      <input type="file" id="photo" name="photo" accept="image/*" required>
+      
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" required>
+      
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      
+      <label for="guardianName">Father/Guardian Name:</label>
+      <input type="text" id="guardianName" name="guardianName" required>
+      
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+      
+      <label for="aadhaar">Aadhaar Number:</label>
+      <input type="text" id="aadhaar" name="aadhaar" required pattern="\d{12}" maxlength="12">
+      
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required pattern="\d{10}" maxlength="10">
+
+      <h2>Address Details</h2>
+      <label for="district">District:</label>
+      <select id="district" name="district" required>
+        <option value="">Select District</option>
+        <option value="chittoor">East godavari</option>       
+       <option value="chittoor">West godavari</option>
+        <option value="chittoor">Guntur</option>
+        <option value="chittoor">Srikakulam</option>
+        <option value="chittoor">Vijayanaagram</option>
+        <option value="chittoor">Vishakapatnam</option>
+        <option value="krishna">Krishna</option>
+        <option value="guntur">Kadapa</option>
+        <!-- Add more districts here -->
+      </select>
+
+      <label for="mandal">Mandal:</label>
+      <select id="mandal" name="mandal" required>
+        <option value=""> select Mandal</option>
+        <option value="">Achanta Mandal</option>
+        <option value="">Akiveedu Mandal</option>
+        <option value="">Attli Mandal</option>
+        <option value="">Bhimavaram Mandal</option>
+        <option value="">Ganapavaram Mandal</option>
+<option value="">kalla Mandal</option>
+<option value="">Mogalthur Mandal</option>
+<option value="">Palakollu Mandal</option>
+<option value="">palacoderu Mandal</option>
+<option value="">penugonda Mandal</option>
+<option value="">poduru Mandal</option>
+<option value="">Tadepalligudem Mandal</option>
+<option value="">Tanuku  Mandal</option>
+
+
+
+
+
+
+
+
+
+
+      </select>
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <h2>Institution Details</h2>
+      <label for="instituteName">Institute Name:</label>
+      <input type="text" id="instituteName" name="instituteName" required>
+      
+      <label for="instituteAddress">Institute Address:</label>
+      <textarea id="instituteAddress" name="instituteAddress" rows="3" required></textarea>
+      
+      <label for="courseName">Course Name:</label>
+      <input type="text" id="courseName" name="courseName" required>
+      
+      <label for="admissionNumber">Admission Number:</label>
+      <input type="text" id="admissionNumber" name="admissionNumber" required>
+      
+      <label for="passCategory">Pass Category:</label>
+      <select id="passCategory" name="passCategory" required>
+        <option value="">Select Pass Category</option>
+        <option value="student">Student</option>
+        
+        <option value="general">General</option>
+      </select><label for="study_certificate">Upload Study Certificate (PDF, JPG, PNG):</label>
+            <input type="file" id="study_certificate" name="study_certificate" accept=".jpg, .png, .pdf" required>
+
+            
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

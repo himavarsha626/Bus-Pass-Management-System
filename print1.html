@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Pass Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f9;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      width: 100%;
+    }
+    .details-container {
+      padding: 50px;
+      background: white;
+      margin: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 80%;
+    }
+    .details-container p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    footer {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BUS PASS MANAGEMENT SYSTEM</h1>  
+  </header> 
+  <div class="details-container" id="details">
+    <h2>Enter Bus Pass ID</h2>
+    <input type="text" id="busPassId" placeholder="Enter Bus Pass ID">
+    <button id="fetchDetails">Get Bus Pass Details</button>
+    <div id="busPassDetails">
+      <p id="busPassIdDetails"></p>
+      <p id="name"></p>
+      <p id="route"></p>
+      <p id="validity"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('fetchDetails').addEventListener('click', function() {
+      const busPassId = document.getElementById('busPassId').value.trim();
+
+      if (busPassId) {
+        // Fetch data from the PHP script using AJAX
+        fetch(`db.php?busPassId=${busPassId}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.error) {
+              alert(data.error);
+            } else {
+              // Display the fetched data
+              document.getElementById('busPassIdDetails').textContent = `Bus Pass ID: ${data.bus_pass_id}`;
+              document.getElementById('name').textContent = `Name: ${data.name}`;
+              document.getElementById('route').textContent = `Route: ${data.route}`;
+              document.getElementById('validity').textContent = `Validity: ${data.validity}`;
+            }
+          })
+          .catch(error => {
+            alert('Error fetching data: ' + error);
+          });
+      } else {
+        alert('Please enter a Bus Pass ID.');
+      }
+    });
+  </script>
+
+  <footer>
+    <p>Copyright © 2024 Bus Pass Management System. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+

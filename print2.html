@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Pass Generation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }    header {
+ background-image:url('busimg.png');
+   background-color:;
+   color: black;
+   text-align: center;
+   padding: 20px 0;
+   width:100%;
+}
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            font-size: 18px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .button {
+            padding: 10px 20px;
+  width: 100%;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        .print-button {
+            display: none;
+            width: 100%;
+            padding: 10px;
+            background-color: blue;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .print-button:hover {
+            background-color: #218838;
+        }footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom:0;
+    width:99%;
+}
+    </style>
+</head>
+<body><header>
+    <h1>Bus Pass Management System</h1>
+</header>
+    <div class="container">
+        <h2>Bus Pass Information</h2>
+        <form id="busPassForm" method="POST">
+            <div class="input-group">
+                <label for="bus_pass_id">Enter Bus Pass ID:</label>
+                <input type="text" id="bus_pass_id" name="bus_pass_id" required>
+            </div>
+            <button type="submit" class="button">Generate Bus Pass</button>
+        </form>
+
+        <div class="result" id="result"></div>
+        <button id="printBtn" class="print-button" style="display: none;">Print </button>
+    </div>
+
+    <script>
+        const form = document.getElementById('busPassForm');
+        const resultDiv = document.getElementById('result');
+        const printButton = document.getElementById('printBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const busPassId = document.getElementById('bus_pass_id').value;
+
+            fetch('generate_bus_pass.php', {
+                method: 'POST',
+                body: new URLSearchParams({ bus_pass_id: busPassId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <h3>Bus Pass :</h3>
+                        <p><strong>Bus Pass ID:</strong> ${data.bus_pass_id}</p>
+                        <p><strong>Name:</strong> ${data.name}</p>
+                        <p><strong>Route:</strong> ${data.route}</p>
+                        <p><strong>Expiry Date:</strong> ${data.expiry_date}</p>
+                    `;
+                    printButton.style.display = 'block'; // Show the print button
+                } else {
+                    resultDiv.innerHTML = `<p>No bus pass found with ID: ${busPassId}</p>`;
+                    printButton.style.display = 'none'; // Hide print button if no results
+                }
+            })
+            .catch(error => {
+                resultDiv.innerHTML = `<p>Error fetching data: ${error}</p>`;
+                printButton.style.display = 'none'; // Hide print button if there's an error
+            });
+        });
+
+        // Function to print the bus pass details
+        printButton.addEventListener('click', function() {
+            const printContents = resultDiv.innerHTML;
+            const originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        });
+    </script><footer>
+        <p>Copyright © 2024 Bus Pass Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
